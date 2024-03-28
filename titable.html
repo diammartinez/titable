@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Titable</title>
+  <link rel="stylesheet" href="titable/css/titable.css">
+  <link rel="stylesheet" href="titable/css/inputs.css">
+  <style>
+    body,
+    html {
+      height: 100vh;
+      width: 100vw;
+    }
+
+    div {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="table-container"></div>
+  <!-- <div id="table-container2"></div> -->
+  <script src="titable/js/titable.js"></script>
+  <script>
+
+    const parametros = {
+      container: "table-container",     // Id del contenedor
+      cnn: {                            // Objeto que contiene la info de la DB y tabla usada
+        host: "localhost",
+        user: "root",
+        password: "",
+        db: "lab",
+        table: "pacientes",
+        recordsPerPage: 10              // REgistros por pagina
+      },
+      columns: [                        // Columnas que seran mostradas
+        "id",
+        "apellido",
+        "nombre",
+        "email",
+        "validated",
+      ],
+      // icons: ["open", "mail", "edit", "records", "delete"],        // Iconos que se agregaran a las filas
+      icons: ["edit", "delete"],        // Iconos que se agregaran a las filas
+      iconFunction: iconUsuarios       // Funcion que se dispara al hacer clic sobre los iconos
+    };
+
+    // se instancia la clase titable para crear la tabla
+    const tablaUsuarios = new Titable(parametros);
+    // Llama al metodo crearTabla de la clase tablaUsuarios
+    tablaUsuarios.crearTabla();
+    // se escucha el evento personalisado "queryfinished"
+    tablaUsuarios.addEventListener("queryfinished", (e) => {
+      console.log("status: " + e.response.status);
+      console.log("RecordsFound: " + e.response.recordsFound);
+    });
+
+    // funcion usada al hacer click en los iconos de las filas
+    function iconUsuarios(elem) {
+      if (elem.target && elem.target.tagName == "A") {
+        let id = elem.target.dataset.id;
+        let command = elem.target.dataset.command;
+        if (command == "edit") {
+          console.log("Editar usuario");
+        } else if (command == "delete") {
+          console.log("eliminarUsuario");
+        }
+      }
+    }
+
+    const parametros2 = {
+      container: "table-container2",     // Id del contenedor
+      cnn: {                            // Objeto que contiene la info de la DB y tabla usada
+        host: "localhost",
+        user: "root",
+        password: "",
+        db: "lab",
+        table: "pacientes",
+        recordsPerPage: 10              // REgistros por pagina
+      },
+      columns: [                        // Columnas que seran mostradas
+        "id",
+        "apellido",
+        "nombre",
+        "email",
+        "validated",
+      ],
+      // icons: ["open", "mail", "edit", "records", "delete"],        // Iconos que se agregaran a las filas
+      icons: ["edit", "delete"],        // Iconos que se agregaran a las filas
+      iconFunction: iconUsuarios        // Funcion que se dispara al hacer clic sobre los iconos
+    };
+
+    // // se instancia la clase titable para crear la tabla
+    // const tabla2 = new Titable(parametros2);
+    // // Llama al metodo crearTabla de la clase tablaUsuarios
+    // tabla2.crearTabla();
+    // // se escucha el evento personalisado "queryfinished"
+    // tabla2.addEventListener("queryfinished", (e) => {
+    //   console.log("status: " + e.response.status);
+    //   console.log("RecordsFound: " + e.response.recordsFound);
+    // });
+
+  </script>
+</body>
+
+</html>

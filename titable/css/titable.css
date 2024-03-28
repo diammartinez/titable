@@ -1,0 +1,500 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* overflow: hidden; */
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+main {
+  height: 550px;
+  border: 2px solid #bdbaba;
+  padding: 10px;
+}
+
+.amarillo,
+.resaltado {
+  color: #000;
+  background-color: #ffc107;
+  border-color: #ffc107;
+  padding: 5px 0px;
+}
+
+.section-name,
+.container-titable .table-header .flex-items .section-name,
+.container-titable .table-header .flex-items .section-name a {
+  font-size: 22px;
+  color: #595858;
+  text-shadow: 1px 1px 1px #fff;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  display: inline;
+  text-decoration: navajowhite;
+  padding: 0px;
+  margin-right: 5px;
+}
+
+.container-titable {
+  /* font-family: "Open Sans", sans-serif; */
+  /* font-family: "Roboto", sans-serif; */
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+.container-titable {
+  display: grid;
+  gap: 5px;
+  grid-template-areas: "tabla_header" "tabla" "tabla_paginacion";
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 1fr 50px;
+  justify-items: center;
+  overflow: hidden;
+  padding: 0 15px;
+  height: 100%;
+  width: 100%;
+}
+/* Envabezado de la tabla */
+.table-header {
+  grid-area: tabla_header;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  align-self: center;
+  height: 100%;
+}
+
+.flex-items {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-grow: 1;
+  flex-basis: 50%;
+}
+
+/* CSS del encabezado de la tabla, nombre de la seccion, paciente y buscador*/
+.container-titable .table-header .flex-items:nth-child(1) {
+  justify-content: left;
+  font-size: 18px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.container-titable .table-header .flex-items:nth-child(2) {
+  justify-content: right;
+}
+
+/* Centra los elementos de la iltima celda/header */
+.xtable > table > thead > tr > th:last-child,
+.content-table > tr > td:last-child {
+  text-align: center;
+}
+
+/* CSS del lado izquierdo */
+.container-titable .flex-items select {
+  max-width: 64px;
+  background-color: #fff;
+  min-height: 36px;
+  margin: 0;
+}
+
+.flex-items label {
+  padding: 0px 10px;
+}
+
+/* Envabezado de la tabla */
+/* CSS del header de la tabla* para dejarlo fijo*/
+.container-titable .xtable thead tr th {
+  background: #fff;
+  font-size: 15px;
+  text-align: left;
+  font-weight: 500;
+  padding: 12px 0px;
+  position: sticky;
+  top: 0;
+}
+
+.container-titable .xtable table thead th:hover {
+  cursor: pointer;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* CSS del la linea debajo de los titulos de la tabla */
+.container-titable .xtable table thead th::before {
+  position: absolute;
+  content: "";
+  height: 3px;
+  width: calc(100% + 50px);
+  background: #515151;
+  bottom: 1px;
+  left: -50px;
+}
+
+/* CSS de la columna de acciones */
+.container-titable .xtable .col-center {
+  /* .container-titable .xtable thead tr .col-center { */
+  text-align: center;
+}
+/* CSS de la primera celda de la tabla...padding */
+.container-titable .xtable table thead th:nth-child(1),
+.container-titable .xtable table tbody td:nth-child(1) {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* CSS de los titulos de las columnas */
+
+.container-titable .xtable {
+  height: 100%;
+  overflow: auto;
+  grid-area: tabla;
+  width: 100%;
+}
+
+.container-titable .xtable table {
+  background: #fff;
+  border-collapse: collapse;
+  font-size: 15px;
+  color: #4c4e50;
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-align: start;
+  line-height: initial;
+  letter-spacing: 0.4px;
+  width: 100%;
+}
+/* .. selecciona las filas pares */
+.container-titable .xtable table tbody tr:nth-child(even) {
+  /* .container-titable .xtable table tbody tr:nth-child(odd) { */
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Alto de las celdas del cuerpo de la tabla */
+.container-titable .xtable table tbody tr td {
+  padding: 10px 0px;
+}
+/* Borde de la fila del titulo */
+.container-titable .xtable table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+/* CSS de los enlaces de las celdas de la tabla */
+.container-titable .xtable a {
+  border-radius: 3px;
+  color: #777;
+  font-weight: 400;
+  padding: 0 10px;
+  text-decoration: none;
+}
+
+/* CSS de los SVG de las celdas de la tabla */
+.xtable table tbody tr td a svg {
+  /* .container-titable .xtable table tbody tr td a svg { */
+  fill: rgb(79, 79, 79);
+  font-size: 24px;
+  height: 22px;
+  pointer-events: none;
+  width: 22px;
+}
+
+/* CSS del cuerpo de la tabla*/
+
+/* CSS del cuerpo de la tabla*/
+
+/* CSS de la pagiacion */
+.tabla_paginacion {
+  background-color: #fff;
+  grid-area: tabla_paginacion;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  align-self: center;
+  height: 100%;
+}
+
+/* Coloca los elementos del lado izquierd de la celda */
+.tabla_paginacion > div:nth-child(2) {
+  justify-content: center;
+}
+/* Coloca los elementos del lado derecho de la celda */
+.tabla_paginacion > div:nth-child(3) {
+  justify-content: end;
+}
+
+.tabla_paginacion > div:nth-child(1),
+.tabla_paginacion > div:nth-child(2) {
+  flex-grow: 1;
+  flex-basis: 50%;
+}
+
+.pagination {
+  display: flex;
+  list-style: none;
+  margin-right: 20px;
+}
+/* CSS de los elementos de la pagiancion */
+.page-link {
+  position: relative;
+  display: block;
+  color: #0d6efd;
+  text-decoration: none;
+  padding: 0.375rem 0.75rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  font-size: 16px;
+  background-image: linear-gradient(to bottom, #ffffff 0%, #f7f7f7 100%);
+}
+
+/* CSS del efecto de los elementos de la pagiancion al pasar sobre ellos*/
+.page-link:hover {
+  z-index: 2;
+  color: var(--primary-color);
+  background-color: var(--gray-color);
+  border-color: #dee2e6;
+}
+
+/* CSS del primer elemento de la paginacion */
+.page-item:first-child .page-link {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+/* CSS del ultimo elemento de la paginacion */
+.page-item:last-child .page-link {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+/* CSS del elemento activo dentro de la paginacion */
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  border-color: #0186ba;
+  background: linear-gradient(#04acec, #0186ba);
+}
+
+/* Paginacion */
+
+/* campo de busqueda */
+.searchInputDiv {
+  /* .search-input { */
+  width: 250px;
+  position: relative;
+  height: 100%;
+  border: none;
+}
+/* CSS del campo e busqueda */
+.searchInputDiv input[type="text"] {
+  position: absolute;
+  width: 98%;
+  padding-left: 5px;
+  padding-right: 40px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  left: 50%;
+  max-height: 36px;
+  background: #fff;
+  min-height: 36px;
+  appearance: none;
+  border: 1px solid #acacac;
+  border-radius: 5px;
+  background-image: linear-gradient(to bottom, #ffffff 0%, #f7f7f7 100%);
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.03);
+}
+
+/* CSS de la X del campo */
+.searchInputDiv svg {
+  fill: rgba(0, 0, 0, 0.65);
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+}
+/* CSS del hover de la X */
+.searchInputDiv svg:hover {
+  cursor: pointer;
+}
+/* campo de busqueda */
+
+.drop-shadow:hover svg {
+  filter: drop-shadow(3px 3px 9px rgba(0, 0, 0, 0.7));
+  transform: translate(1px, 1px);
+  transition: all 300ms ease-in-out;
+}
+
+.drop-shadow svg {
+  fill: #595858;
+  height: 32px;
+  width: 32px;
+  pointer-events: none;
+}
+
+.drop-shadow ~ .tooltip {
+  /* .sidebar li .tooltip, .sidebarIconToggle .tooltip { */
+  position: absolute;
+  top: -20px;
+  left: calc(100% + 15px);
+  /* z-index: 3; */
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  /* padding: 6px 12px; */
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 400;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0s;
+  z-index: 199;
+  cursor: pointer;
+  /* padding: 20px; */
+  min-width: 100px;
+  text-align: center;
+}
+
+.drop-shadow:hover ~ .tooltip {
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.4s ease;
+  top: 50%;
+  transform: translateY(-50%);
+  line-height: 50px;
+  color: #8b8484;
+}
+
+.container-titable .xtable thead tr th {
+  background: #fff;
+  font-size: 15px;
+  text-align: left;
+  font-weight: 500;
+  padding: 24px 0px;
+  position: sticky;
+  color: #000;
+  top: 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+table tbody tr:hover th,
+table tbody tr:hover td {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.container-titable .xtable table tbody tr td {
+  padding: 15px 0px;
+  color: #827f7f;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.container-titable .xtable table thead th::before {
+  position: absolute;
+  content: "";
+  height: 1px;
+  width: calc(100% + 50px);
+  background: #ddd;
+  bottom: 1px;
+  left: -50px;
+}
+
+.titable .xtable table {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.container-titable .xtable table tbody tr:nth-child(2n) {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.xtable table tbody tr td a svg {
+  fill: #777;
+  font-size: 24px;
+  height: 22px;
+  pointer-events: none;
+  width: 22px;
+}
+
+.searchInputDiv {
+  width: 100%;
+  position: relative;
+  height: 100%;
+  border: none;
+  max-width: 320px;
+}
+
+.searchInputDiv input[type="text"] {
+  position: absolute;
+  width: 98%;
+  padding-left: 5px;
+  padding-right: 40px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  left: 50%;
+  /* max-height: 9px; */
+  background: #fff;
+  min-height: 44px;
+  appearance: none;
+  border: 1px solid #acacac;
+  border-radius: 5px;
+  background-image: linear-gradient(to bottom, #ffffff 0%, #f7f7f7 100%);
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.03);
+}
+
+.container-titable {
+  display: grid;
+  gap: 5px;
+  grid-template-areas: "tabla_header" "tabla" "tabla_paginacion";
+  grid-template-columns: 1fr;
+  grid-template-rows: 64px 1fr 64px;
+  justify-items: center;
+  overflow: hidden;
+  padding: 5px 24px;
+  height: 100%;
+  width: 100%;
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  color: #0d6efd;
+  text-decoration: none;
+  padding: 0.375rem 0.75rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  font-size: 16px;
+  background-image: linear-gradient(to bottom, #ffffff 0%, #f7f7f7 100%);
+  padding: 10px 15px;
+}
+
+.container-titable .tabla_paginacion {
+  /* .container-titable .xtable thead tr th { */
+  background: #fff;
+  font-size: 15px;
+  text-align: left;
+  font-weight: 500;
+  padding: 24px 0px;
+  position: sticky;
+  color: #000;
+  top: 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.container-titable .flex-items select {
+  max-width: 64px;
+  background-color: #fff;
+  min-height: 36px;
+  margin: 0;
+  height: 42px;
+}
